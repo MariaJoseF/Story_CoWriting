@@ -90,18 +90,20 @@ class FullStoryList(APIView):
 
 			else:
 				try:
-					print (request.POST)
+					#print (request.POST)
 					item = request.POST.get("C_MC",None)
-					dt = request.POST.get("C_MCg")
-					print ("dt = ")
-					print (dt)
-					print ("receiveid item =") 
-					print (item)
-					option = request.POST.get("emotion",None)
-					print ("receiveid option =") 
-					print (option)
-					if item and option is not None:
-						text = '{\'C_MC\': \' '+ item + '\', \'emotion\': \'' +option + '\'} \n'
+					dt = request.POST.get("received_dt")
+					print ("dt = %s" % dt)
+					#print (dt)
+					print ("receiveid item = %s" % item) 
+					#print (item)
+					emoti = request.POST.get("emotion",None)
+					print ("receiveid emotion = %s" % emoti) 
+					#print (emoti)
+
+
+					if item and emoti is not None:
+						text = '{\'C_MC\': \' '+ item + '\', \'emotion\': \'' +emoti + '\'} \n'
 						f = open('text.txt', 'a')
 						f.write(text)
 						# json.dump(text,f)
@@ -114,7 +116,7 @@ class FullStoryList(APIView):
 					return render(request,'add_story.html',{'request.data':request.data,'error_message':'Nothing Selected'})
 				else:
 					print ("Everything went well")
-					data = {'C_MCg':dt}
+					data = {'received_dt':dt}
 					print (data)
 					return render(request,'add_story.html',data)	
 ######old version

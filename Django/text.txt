@@ -14,3 +14,16 @@
 {'C_MC': ' J', 'emotion': 'sad'} 
 {'C_MC': ' J', 'emotion': 'super_happy'} 
 {'C_MC': ' SSAlfa', 'emotion': 'super_happy'} 
+{'C_MC': ' SSAlfa', 'emotion': 'super_sad'} 
+{'C_MC': ' S', 'emotion': 'happy'} 
+{'C_MC': ' S', 'emotion': 'sad'} 
+{'C_MC': ' S', 'emotion': 'super_happy'} 
+{'C_MC': ' S', 'emotion': 'sad'} 
+{'C_MC': ' S', 'emotion': 'super_happy'} 
+{'C_MC': ' S', 'emotion': 'super_happy'} 
+{'C_MC': ' S', 'emotion': 'sad'} 
+{'C_MC': ' S', 'emotion': 'sad'} 
+{'C_MC': ' S', 'emotion': 'super_happy'} 
+{'C_MC': ' S', 'emotion': 'super_happy'} 
+{'C_MC': ' S', 'emotion': 'super_happy'} 
+{'C_MC': ' S', 'emotion': 'super_happy'} 
