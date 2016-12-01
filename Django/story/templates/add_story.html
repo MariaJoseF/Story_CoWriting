@@ -6,8 +6,48 @@
 		<p><strong>{{ error_message }}</strong></p>p
 	{% endif %}
 
-{{ request.data }}
-{{ request.data.C_MC }}
+<!-- {{ request.data }}
+{{ request.data.C_MC }} -->
+
+<script type="text/javascript">
+	
+function GetValueOpt(element){
+	document.getElementById("C_MC").value = element.value;
+	//document.getElementById("demo1").innerHTML = element.value;
+	var myNodelist = document.getElementsByName("C_MC_");
+    var i, t;
+    for (i = 0; i < myNodelist.length; i++) {
+        myNodelist[i].style.backgroundColor = "white";
+        if(myNodelist[i] == element){
+        	t = i;
+        }
+    }
+    
+    myNodelist[t].style.backgroundColor = "grey";
+	element.disabled = true;
+	element.disabled = true;
+
+}
+
+function GetValueEmotions(element){
+	document.getElementById("emotion").value = element.value;
+	var myNodelist = document.getElementsByName("emotion_");
+    var i, t;
+    for (i = 0; i < myNodelist.length; i++) {
+        myNodelist[i].style.backgroundColor = "white";
+        if(myNodelist[i] == element){
+        	t = i;
+        }
+    }
+    
+    myNodelist[t].style.backgroundColor = "grey";
+	element.disabled = true;
+	//document.getElementById("demo2").innerHTML = element.value;
+	element.disabled = true;
+}
+
+</script>
+
 
 
 	<form action="{% url 'storyteste' %}" method="post">
@@ -19,27 +59,33 @@
 			<br>
 		</div>
 
-		<table border="0" cellpadding="1" cellspacing="1" style="width:80%;border-collapse:collapse;border:1px" align="center">
+		<table border="0" style="width:80%;" align="center">
 			<tbody>		
 				{% for item in request.data.C_MC %}
 					{% if forloop.counter|divisibleby:2 %}
 							<td width="40%" align="center">
-								<input type="radio" name="C_MC" id="item{{ forloop.counter }}" value="{{ item }}"/>
-								<label for="item{{ forloop.counter }}">
-									{{ item }}
-									<img src="https://cdn4.iconfinder.com/data/icons/SIGMA/networking/png/128/piracy.png">
-								</label><br>
+								<input type="image" onclick="GetValueOpt(this)" id="close-CSS" name="C_MC_" value="{{ item }}" src="https://cdn4.iconfinder.com/data/icons/SIGMA/networking/png/128/piracy.png">
+								</input>
+								<div align="center">
+									<label for="item{{ forloop.counter }}">
+										{{ item }}
+									</label>
+								</div>	
+								<br>
 							</td>
 						</tr>
 					{% else %}
 						<tr>
 							<td width="40%" align="center">
-							<input type="radio" name="C_MC" id="item{{ forloop.counter }}" value="{{ item }}"/>
-							<label for="item{{ forloop.counter }}">
-								{{ item }}
-								<img src="https://cdn4.iconfinder.com/data/icons/SIGMA/networking/png/128/piracy.png">
-							</label><br>
-						</td>
+								<input type="image" onclick="GetValueOpt(this)" id="close-CSS" name="C_MC_" value="{{ item }}" src="https://cdn4.iconfinder.com/data/icons/SIGMA/networking/png/128/piracy.png">
+								</input>
+								<div align="center">
+									<label for="item{{ forloop.counter }}">
+										{{ item }}
+									</label>
+								</div>	
+								<br>
+							</td>
 					{% endif %}
 				{% endfor %}
 			</tbody>
@@ -53,41 +99,58 @@
 			<tbody>
 				<tr align="center">
 					<td>
-						<input type="radio" name="emotion" id="item{{ forloop.counter }}" value="happy"/>
+						<!-- <input type="radio" name="emotion" id="item{{ forloop.counter }}" value="happy"/> -->
 						<label for="item{{ forloop.counter }}">
 							{{ item }}
-							<img src="https://cdn2.iconfinder.com/data/icons/emoticons-17/24/emoticons-01-128.png" width="64" height="64">
-						</label><br>
+						</label>
+							<input type="image" onclick="GetValueEmotions(this)" id="close-CSS" name="emotion_" value="happy" src="https://cdn2.iconfinder.com/data/icons/emoticons-17/24/emoticons-01-128.png" width="64" height="64">
+							</input>
+						<br>
 					</td>
 					<td>
-						<input type="radio" name="emotion" id="item{{ forloop.counter }}" value="sad"/>
-						<label for="item{{ forloop.counter }}">
-							{{ item }}
-							<img src="https://cdn2.iconfinder.com/data/icons/emoticons-17/24/emoticons-04-128.png" width="64" height="64">
-						</label><br>
+<!-- 						<input type="radio" name="emotion" id="item{{ forloop.counter }}" value="sad"/>
+ -->						<label for="item{{ forloop.counter }}">
+								{{ item }}
+							</label>
+							<input type="image" onclick="GetValueEmotions(this)" id="close-CSS" name="emotion_" value="sad" src="https://cdn2.iconfinder.com/data/icons/emoticons-17/24/emoticons-04-128.png" width="64" height="64">
+							</input>
+						<br>
 					</td>
 					<td>
-						<input type="radio" name="emotion" id="item{{ forloop.counter }}" value="super_happy"/>
-						<label for="item{{ forloop.counter }}">
-							{{ item }}
-							<img src="https://cdn2.iconfinder.com/data/icons/emoticons-17/24/emoticons-03-128.png" width="64" height="64">
-						</label><br>
+<!-- 						<input type="radio" name="emotion" id="item{{ forloop.counter }}" value="super_happy"/>
+ -->						<label for="item{{ forloop.counter }}">
+								{{ item }}
+							</label>
+							<input type="image" onclick="GetValueEmotions(this)" id="close-CSS" name="emotion_" value="super_happy" src="https://cdn2.iconfinder.com/data/icons/emoticons-17/24/emoticons-03-128.png" width="64" height="64">
+							</input>
+						<br>
 					</td>
 					<td>
-						<input type="radio" name="emotion" id="item{{ forloop.counter }}" value="super_sad"/>
-						<label for="item{{ forloop.counter }}">
-							{{ item }}
-							<img src="https://cdn2.iconfinder.com/data/icons/emoticons-17/24/emoticons-02-128.png" width="64" height="64">
-						</label><br>
+<!-- 						<input type="radio" name="emotion" id="item{{ forloop.counter }}" value="super_sad"/>
+ -->						<label for="item{{ forloop.counter }}">
+								{{ item }}
+							</label>
+							<input type="image" onclick="GetValueEmotions(this)" id="close-CSS" name="emotion_" value="super_sad" src="https://cdn2.iconfinder.com/data/icons/emoticons-17/24/emoticons-02-128.png" width="64" height="64">
+							</input>
+						<br>
 					</td>
 				</tr>
 			</tbody>
 		</table>
 
 		<input type="hidden" value="{{ request.data.C_MCg }}" name="C_MCg" />
-		<input type="hidden" value="Opt" name="Opt" />
+		<input type="hidden" value="Opt" name="Opt" id="Opt" />
+		<input type="hidden" name="C_MC" id="C_MC" />
+		<input type="hidden" name="emotion" id="emotion" />
 		
+
+
+	<p id="demo1"></p>
+<p id="demo2"></p>
+
 	</form>
+
+
 
 {% endblock %}
 

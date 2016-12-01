@@ -90,6 +90,7 @@ class FullStoryList(APIView):
 
 			else:
 				try:
+					print (request.POST)
 					item = request.POST.get("C_MC",None)
 					dt = request.POST.get("C_MCg")
 					print ("dt = ")
@@ -100,7 +101,7 @@ class FullStoryList(APIView):
 					print ("receiveid option =") 
 					print (option)
 					if item and option is not None:
-						text = '{\'selection\': \' '+ item + '\', \'emotion\': \'' +option + '\'} \n'
+						text = '{\'C_MC\': \' '+ item + '\', \'emotion\': \'' +option + '\'} \n'
 						f = open('text.txt', 'a')
 						f.write(text)
 						# json.dump(text,f)

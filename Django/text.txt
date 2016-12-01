@@ -1,2 +1,16 @@
 {'selection': ' Maria', 'emotion': 'sad'} 
 {'selection': ' i', 'emotion': 'super_sad'} 
+{'selection': ' Pedro', 'emotion': 'happy'} 
+{'selection': ' M', 'emotion': 'sad'} 
+{'selection': ' M', 'emotion': 'super_happy'} 
+{'C_MC': ' Maria', 'emotion': ''} 
+{'C_MC': ' RTX21', 'emotion': ''} 
+{'C_MC': ' Maria', 'emotion': ''} 
+{'C_MC': ' Maria', 'emotion': 'happy'} 
+{'C_MC': ' M', 'emotion': 'happy'} 
+{'C_MC': ' M', 'emotion': ''} 
+{'C_MC': ' Maria', 'emotion': 'sad'} 
+{'C_MC': ' J', 'emotion': 'sad'} 
+{'C_MC': ' J', 'emotion': 'sad'} 
+{'C_MC': ' J', 'emotion': 'super_happy'} 
+{'C_MC': ' SSAlfa', 'emotion': 'super_happy'} 
