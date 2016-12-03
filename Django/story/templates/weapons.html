@@ -1,12 +1,177 @@
 {% extends 'base.html' %}
-{% block title %} Story Generation{% endblock %}
+{% block title %}Add Story{% endblock %}
 {% block body %}
-{% csrf_token %}
+
+{% load static %}
+
+	{% if error_message %}
+		<p><strong>{{ error_message }}</strong></p>p
+	{% endif %}
+
+<!-- {{ request.data }}
+{{ request.data.C_MCw }} -->
+
+<script type="text/javascript">
+	
+function GetValueOpt(element){
+	document.getElementById("C_MCw").value = element.value;
+	//document.getElementById("demo1").innerHTML = element.value;
+	var myNodelist = document.getElementsByName("C_MCw_");
+    var i, t;
+    for (i = 0; i < myNodelist.length; i++) {
+        myNodelist[i].style.backgroundColor = "white";
+        if(myNodelist[i] == element){
+        	t = i;
+        }
+    }
+    
+    myNodelist[t].style.backgroundColor = "grey";
+	element.disabled = true;
+	element.disabled = true;
+
+}
+
+function GetValueEmotions(element){
+	document.getElementById("emotion").value = element.value;
+	var myNodelist = document.getElementsByName("emotion_");
+    var i, t;
+    for (i = 0; i < myNodelist.length; i++) {
+        myNodelist[i].style.backgroundColor = "white";
+        if(myNodelist[i] == element){
+        	t = i;
+        }
+    }
+    
+    myNodelist[t].style.backgroundColor = "grey";
+	element.disabled = true;
+	//document.getElementById("demo2").innerHTML = element.value;
+	element.disabled = true;
+}
+
+</script>
+
+	<form action="{% url 'storyteste' %}" method="post">
+		{% csrf_token %}
+		
+		<h1><p>Choose the Main Character weapon</p></h1>
+		<div align="right">
+			<input type="submit" value="NEXT">
+			<br>
+		</div>
+
+		<table border="0" style="width:80%;" align="center">
+			<tbody>		
+				{% for item in C_MCw %}
+					{% if forloop.counter|divisibleby:2 %}
+							<td width="40%" align="center">
+								<input type="image" onclick="GetValueOpt(this)" id="close-CSS" name="C_MCw_" value="{{ item }}" src= "{% static "pictures/" %}{{item}}.png">
+								</input>
+								<div align="center">
+									<label for="item{{ forloop.counter }}">
+										{{ item }}
+									</label>
+								</div>	
+								<br>
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td width="40%" align="center">
+								<input type="image" onclick="GetValueOpt(this)" id="close-CSS" name="C_MCw_" value="{{ item }}"  src= "{% static "pictures/" %}{{item}}.png">
+								</input>
+								<div align="center">
+									<label for="item{{ forloop.counter }}">
+										{{ item }}
+									</label>
+								</div>	
+								<br>
+							</td>
+					{% endif %}
+				{% endfor %}
+			</tbody>
+		</table>
+		<br><br>
+
+		<h4>
+		 	How do you feel with the option selected?
+		 </h4><br>
+		<table width="80%" align="center" border="0">
+			<tbody>
+				<tr align="center">
+					<td>
+						<label for="item{{ forloop.counter }}">
+							{{ item }}
+						</label>
+							<input type="image" onclick="GetValueEmotions(this)" id="close-CSS" name="emotion_" value="happy"  src= "{% static "pictures/happy.png" %}" width="64" height="64">
+							</input>
+						<br>
+					</td>
+					<td>
+						<label for="item{{ forloop.counter }}">
+								{{ item }}
+							</label>
+							<input type="image" onclick="GetValueEmotions(this)" id="close-CSS" name="emotion_" value="sad"  src= "{% static "pictures/sad.png" %}" width="64" height="64">
+							</input>
+						<br>
+					</td>
+					<td>
+						<label for="item{{ forloop.counter }}">
+								{{ item }}
+							</label>
+							<input type="image" onclick="GetValueEmotions(this)" id="close-CSS" name="emotion_" value="super_happy"  src= "{% static "pictures/super_happy.png" %}" width="64" height="64">
+							</input>
+						<br>
+					</td>
+					<td>
+ 						<label for="item{{ forloop.counter }}">
+								{{ item }}
+							</label>
+							<input type="image" onclick="GetValueEmotions(this)" id="close-CSS" name="emotion_" value="super_sad" src= "{% static "pictures/super_sad.png" %}" width="64" height="64">
+							</input>
+						<br>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<input type="hidden" value="Opt7" name="Opt" id="Opt" />
+		
+		<input type="hidden" value="{{ C_MC }}" name="C_MC" id="C_MC" />
+		<input type="hidden" value="{{ C_MCg }}" name="C_MCg" id="C_MCg" />
+		<input type="hidden" value="{{ C_MCj_man }}" name="C_MCj_man" id="C_MCj_man" />
+		<input type="hidden" value="{{ C_MCj_woman }}" name="C_MCj_woman" id="C_MCj_woman" />
+		<input type="hidden" value="{{ C_MCj_robot }}" name="C_MCj_robot" id="C_MCj_robot" />
+		<input type="hidden" value="{{ C_MCd }}" name="C_MCd" id="C_MCd" />
+		<input type="hidden" value="{{ C_MCw }}" name="C_MCw" id="C_MCw" />
+
+		<input type="hidden" value="{{ C_P }}" name="C_P" id="C_P" />
+		
+		<input type="hidden" value="{{ C_SC }}" name="C_SC" id="C_SC" />
+		<input type="hidden" value="{{ C_SCg }}" name="C_SCg" id="C_SCg" />
+		<input type="hidden" value="{{ C_SCs_human }}" name="C_SCs_human" id="C_SCs_human" />
+		<input type="hidden" value="{{ C_SCs_robot }}" name="C_SCs_robot" id="C_SCs_robot" />
+		<input type="hidden" value="{{ C_SC_dance }}" name="C_SC_dance" id="C_SC_dance" />
+
+		<input type="hidden" value="{{ C_BG }}" name="C_BG" id="C_BG" />
+		<input type="hidden" value="{{ C_BGg }}" name="C_BGg" id="C_BGg" />
+		<input type="hidden" value="{{ C_BGj_man }}" name="C_BGj_man" id="C_BGj_man" />
+		<input type="hidden" value="{{ C_BGj_woman }}" name="C_BGj_woman" id="C_BGj_woman" />
+		<input type="hidden" value="{{ C_BGj_robot }}" name="C_BGj_robot" id="C_BGj_robot" />
+		<input type="hidden" value="{{ C_Ba }}" name="C_Ba" id="C_Ba" />
+		<input type="hidden" value="{{ C_BGp }}" name="C_BGp" id="C_BGp" />
+		<input type="hidden" value="{{ C_BGd }}" name="C_BGd" id="C_BGd" />
+
+		<input type="hidden" value="" name="emotion" id="emotion" />
+		<input type="hidden" value="{{ gender }}" name="gender" id="gender" />
 
 
 
+<!-- 	<p id="demo1"></p>
+	<p id="demo2"></p> -->
 
+	</form>
 
 
 
 {% endblock %}
+

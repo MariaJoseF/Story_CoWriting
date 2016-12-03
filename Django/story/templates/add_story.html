@@ -64,7 +64,7 @@ function GetValueEmotions(element){
 				{% for item in request.data.C_MC %}
 					{% if forloop.counter|divisibleby:2 %}
 							<td width="40%" align="center">
-								<input type="image" onclick="GetValueOpt(this)" id="close-CSS" name="C_MC_" value="{{ item }}" src= "{% static "pictures/{{ item }}.png" %}">
+								<input type="image" onclick="GetValueOpt(this)" id="close-CSS" name="C_MC_" value="{{ item }}" src= "{% static "pictures/" %}{{item}}.png">
 								</input>
 								<div align="center">
 									<label for="item{{ forloop.counter }}">
@@ -77,7 +77,7 @@ function GetValueEmotions(element){
 					{% else %}
 						<tr>
 							<td width="40%" align="center">
-								<input type="image" onclick="GetValueOpt(this)" id="close-CSS" name="C_MC_" value="{{ item }}"  src= "{% static "pictures/{{ item }}.png" %}">
+								<input type="image" onclick="GetValueOpt(this)" id="close-CSS" name="C_MC_" value="{{ item }}"  src= "{% static "pictures/" %}{{item}}.png">
 								</input>
 								<div align="center">
 									<label for="item{{ forloop.counter }}">

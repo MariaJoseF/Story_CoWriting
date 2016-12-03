@@ -9,14 +9,14 @@
 	{% endif %}
 
 <!-- {{ request.data }}
-{{ request.data.C_P }} -->
+{{ request.data.C_MCd }} -->
 
 <script type="text/javascript">
 	
 function GetValueOpt(element){
-	document.getElementById("C_P").value = element.value;
+	document.getElementById("C_MCd").value = element.value;
 	//document.getElementById("demo1").innerHTML = element.value;
-	var myNodelist = document.getElementsByName("C_P_");
+	var myNodelist = document.getElementsByName("C_MCd_");
     var i, t;
     for (i = 0; i < myNodelist.length; i++) {
         myNodelist[i].style.backgroundColor = "white";
@@ -53,7 +53,7 @@ function GetValueEmotions(element){
 	<form action="{% url 'storyteste' %}" method="post">
 		{% csrf_token %}
 		
-		<h1><p>Choose the Place of the story</p></h1>
+		<h1><p>Choose the favourite drink of the Main Character</p></h1>
 		<div align="right">
 			<input type="submit" value="NEXT">
 			<br>
@@ -61,10 +61,10 @@ function GetValueEmotions(element){
 
 		<table border="0" style="width:80%;" align="center">
 			<tbody>		
-				{% for item in C_P %}
+				{% for item in C_MCd %}
 					{% if forloop.counter|divisibleby:2 %}
 							<td width="40%" align="center">
-								<input type="image" onclick="GetValueOpt(this)" id="close-CSS" name="C_P_" value="{{ item }}" src= "{% static "pictures/" %}{{item}}.png">
+								<input type="image" onclick="GetValueOpt(this)" id="close-CSS" name="C_MCd_" value="{{ item }}" src= "{% static "pictures/" %}{{item}}.png">
 								</input>
 								<div align="center">
 									<label for="item{{ forloop.counter }}">
@@ -77,7 +77,7 @@ function GetValueEmotions(element){
 					{% else %}
 						<tr>
 							<td width="40%" align="center">
-								<input type="image" onclick="GetValueOpt(this)" id="close-CSS" name="C_P_" value="{{ item }}"  src= "{% static "pictures/" %}{{item}}.png">
+								<input type="image" onclick="GetValueOpt(this)" id="close-CSS" name="C_MCd_" value="{{ item }}"  src= "{% static "pictures/" %}{{item}}.png">
 								</input>
 								<div align="center">
 									<label for="item{{ forloop.counter }}">
@@ -134,7 +134,7 @@ function GetValueEmotions(element){
 			</tbody>
 		</table>
 
-		<input type="hidden" value="Opt8" name="Opt" id="Opt" />
+		<input type="hidden" value="Opt6" name="Opt" id="Opt" />
 		
 		<input type="hidden" value="{{ C_MC }}" name="C_MC" id="C_MC" />
 		<input type="hidden" value="{{ C_MCg }}" name="C_MCg" id="C_MCg" />
