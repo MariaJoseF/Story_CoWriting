@@ -33,49 +33,15 @@ class HeaderView():
 class FooterView():
 	template_name = 'footer.html'
 
-class StoryView(TemplateView):
-	template_name = 'add_story.html'
 
-class Story2View():
-	template_name = 'add_story2.html'
-
-class StoryCreate  (CreateView):
-	model = Story
-	fields = ['namest', 'script','idty','idsc']
-
-# Lists all stories or create a new one
-class StoryList(APIView):
-
-	# def get(self, request):
-	# 	story = Story.objects.all()
-	# 	serializers = StorySerializer(story, many=True)
-	# 	return Response(serializers.data)
-
-	def post(self,request):
-		template_name = 'add_story2.html'
-		serializer = StorySerializer(data=request.data)
-		if serializer.is_valid():
-			#serializers.save()
-			response = render(request, template_name, request.data)
-    		return response
-
-######old version
-			#return Response(serializers.data, status=status.HTTP_201_CREATED)
-		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-class FullStoryList(APIView):
-	# def get(self, request):
-	# 	story = Story.objects.all()
-	# 	serializers = StorySerializer(story, many=True)
-	# 	return Response(serializers.data)
+class FullStoryList(APIView):	
 
 	def post(self,request):
 		#template_name = 'story.html'
 		template_name = 'gendermch.html'
 		serializer = FullStSerializer(data=request.data)
 		gender = ""
-		template_name_previous = template_name
+		template_name_previous = ""
 		item = ""
 		namevar = ""
 
@@ -84,9 +50,13 @@ class FullStoryList(APIView):
 				print("serializer.is_valid")
 
 				if serializer.is_valid():
+					text = '{------ Start new Story ------}\n'
+					f = open('text.txt', 'a')
+					f.write(text)
+					f.close()
 					#serializers.save()
-					getPost = GetPostData()
-					getPost.object_decoder(request.data)
+					# getPost = GetPostData()
+					# getPost.object_decoder(request.data)
 					#print request.data
 					response = render(request, template_name, request.data)
 				return response
@@ -318,8 +288,9 @@ class FullStoryList(APIView):
 						namevar = "C_BGd"
 						template_name = 'badactions.html'
 						
-
-					if item and emoti is not None:
+					print ((item and emoti is not None) and emoti !="")
+					print (template_name_previous)
+					if (item and emoti is not None) and emoti !="":
 						text = '{\''+namevar+'\': \' '+ item + '\', \'emotion\': \'' +emoti + '\'} \n'
 						f = open('text.txt', 'a')
 						f.write(text)
@@ -330,7 +301,7 @@ class FullStoryList(APIView):
 					print ("errors???")
 					print (e)
 
-					dt.update([('error_message', 'Nothing Selected')])
+					dt.update([('error_message', 'You need to select an action and an emotion')])
 					
 					print (dt)
 					return render(request,template_name_previous, context = dt, content_type="json")
@@ -339,34 +310,3 @@ class FullStoryList(APIView):
 					return render(request,template_name,context = dt, content_type="json")	
 
 		return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
-
-#def storyteste(request):
-	def storyteste(request):
-		print ("story teste")
-		if True:
-
-		#if request.method  == 'POST':
-			try:
-				item = request.POST.get("C_MC",None)
-				dt = request.POST.get("C_MCg")
-				print ("receiveid item =") 
-				print (item)
-				option = request.POST.get("emotion",None)
-				print ("receiveid option =") 
-				print (option)
-				if item is not None:
-					text = {'selection':item, 'emotion':option}
-					f = open('text.txt', 'w+')
-					f.write(str(text))
-					#json.dump(text,f)
-					f.close()
-					msg = String()
-					msg.data = text
-					pub_child_choice.publish(msg)
-
-			except Exception as e:
-				print ("errors???")
-				return render(request,'add_story.html',{'error_message':'Nothing Selected'})
-			else:
-				print ("Everything went well")
-				return render(request,'add_story.html',dt)

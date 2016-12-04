@@ -20,10 +20,8 @@ from story import views
 
 urlpatterns = [
 	url(r'^$', include('story.urls')),
- 	url(r'^story/', views.StoryView.as_view(),name='add_story'),
- 	url(r'^story2/', views.StoryList.as_view(),name='add_story2'),
  	url(r'^st/', views.FullStoryList.as_view(),name='story'),
-	url(r'^st/teste', views.FullStoryList.storyteste, name='storyteste'),
+	url(r'^st/create', views.FullStoryList.post, name='storyteste'),
 
     url(r'^admin/', admin.site.urls),
 ]

@@ -38,8 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'story',
     'rest_framework',
+    'story.apps.StoryConfig',
+    # 'story',
 
 ]
 
@@ -79,10 +80,11 @@ WSGI_APPLICATION = 'StoryCoWriting.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'storytelling',
-        'USER':'root',
-        'PASSWORD': 'root',
+        #'NAME': os.path.join(BASE_DIR,'db.sqlite3'),
+        # 'USER':'root',
+        # 'PASSWORD': 'root',
         'HOST':'',
         'PORT':'',
     }

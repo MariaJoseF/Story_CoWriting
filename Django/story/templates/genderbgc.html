@@ -5,7 +5,7 @@
 {% load static %}
 
 	{% if error_message %}
-		<p><strong>{{ error_message }}</strong></p>p
+		<p><strong><font color="red">{{ error_message }}</font></strong></p>
 	{% endif %}
 
 <!-- {{ request.data }}
@@ -65,7 +65,7 @@ function GetValueEmotions(element){
 				{% for item in C_BGg %}
 					{% if forloop.counter|divisibleby:2 %}
 							<td width="40%" align="center">
-								<input type="image" onclick="GetValueOpt(this)" id="close-CSS" name="C_BGg_" value="{{ item }}" src= "{% static "pictures/" %}{{item}}.png">
+								<input type="image"  onclick="GetValueOpt(this)" id="icons-CSS" width ="128px" height="128px" name="C_BGg_" value="{{ item }}" src= "{% static "pictures/" %}{{item}}.png">
 								</input>
 								<div align="center">
 									<label for="item{{ forloop.counter }}">
@@ -78,7 +78,7 @@ function GetValueEmotions(element){
 					{% else %}
 						<tr>
 							<td width="40%" align="center">
-								<input type="image" onclick="GetValueOpt(this)" id="close-CSS" name="C_BGg_" value="{{ item }}"  src= "{% static "pictures/" %}{{item}}.png">
+								<input type="image" onclick="GetValueOpt(this)" id="icons-CSS" width ="128px" height="128px" name="C_BGg_" value="{{ item }}"  src= "{% static "pictures/" %}{{item}}.png">
 								</input>
 								<div align="center">
 									<label for="item{{ forloop.counter }}">
@@ -103,7 +103,7 @@ function GetValueEmotions(element){
 						<label for="item{{ forloop.counter }}">
 							{{ item }}
 						</label>
-							<input type="image" onclick="GetValueEmotions(this)" id="close-CSS" name="emotion_" value="happy"  src= "{% static "pictures/happy.png" %}" width="64" height="64">
+							<input type="image" class = "emotions" onclick="GetValueEmotions(this)" id="emotions-CSS" name="emotion_" value="happy"  src= "{% static "pictures/happy.png" %}" width="64" height="64">
 							</input>
 						<br>
 					</td>
@@ -111,7 +111,7 @@ function GetValueEmotions(element){
 						<label for="item{{ forloop.counter }}">
 								{{ item }}
 							</label>
-							<input type="image" onclick="GetValueEmotions(this)" id="close-CSS" name="emotion_" value="sad"  src= "{% static "pictures/sad.png" %}" width="64" height="64">
+							<input type="image" class = "emotions" onclick="GetValueEmotions(this)" id="emotions-CSS" name="emotion_" value="sad"  src= "{% static "pictures/sad.png" %}" width="64" height="64">
 							</input>
 						<br>
 					</td>
@@ -119,7 +119,7 @@ function GetValueEmotions(element){
 						<label for="item{{ forloop.counter }}">
 								{{ item }}
 							</label>
-							<input type="image" onclick="GetValueEmotions(this)" id="close-CSS" name="emotion_" value="super_happy"  src= "{% static "pictures/super_happy.png" %}" width="64" height="64">
+							<input type="image" onclick="GetValueEmotions(this)" id="emotions-CSS" name="emotion_" value="super_happy"  src= "{% static "pictures/super_happy.png" %}" width="64" height="64">
 							</input>
 						<br>
 					</td>
@@ -127,7 +127,7 @@ function GetValueEmotions(element){
  						<label for="item{{ forloop.counter }}">
 								{{ item }}
 							</label>
-							<input type="image" onclick="GetValueEmotions(this)" id="close-CSS" name="emotion_" value="super_sad" src= "{% static "pictures/super_sad.png" %}" width="64" height="64">
+							<input type="image" onclick="GetValueEmotions(this)" id="emotions-CSS" name="emotion_" value="super_sad" src= "{% static "pictures/super_sad.png" %}" width="64" height="64">
 							</input>
 						<br>
 					</td>

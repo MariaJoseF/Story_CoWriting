@@ -3,12 +3,12 @@
 #   * Rearrange models' order
 #   * Make sure each model has one field with primary_key=True
 #   * Make sure each ForeignKey has `on_delete` set to the desired behavior.
-#   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
+#   * Remove `managed = True` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from __future__ import unicode_literals
 from django.core.urlresolvers import reverse
-
 from django.db import models
+
 
 class FullSt(models.Model):
     """docstring for ClassName"""
@@ -16,7 +16,7 @@ class FullSt(models.Model):
         super(ClassName, self).__init__()
         self.arg = arg
     class Meta:
-        managed = False
+        managed = True
         
 class Accessories(models.Model):
     idaccessories = models.AutoField(db_column='idAccessories', primary_key=True)  # Field name made lowercase.
@@ -26,7 +26,7 @@ class Accessories(models.Model):
     idwe = models.ForeignKey('Weapons', models.DO_NOTHING, db_column='idWe', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'Accessories'
 
 
@@ -35,7 +35,7 @@ class Categories(models.Model):
     nameca = models.CharField(db_column='nameCa', max_length=45, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'Categories'
 
 
@@ -45,7 +45,7 @@ class ChAc(models.Model):
     idac = models.ForeignKey(Accessories, models.DO_NOTHING, db_column='idAc')  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'Ch_Ac'
 
 
@@ -55,7 +55,7 @@ class ChTi(models.Model):
     idti = models.ForeignKey('Ticks', models.DO_NOTHING, db_column='idTi')  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'Ch_Ti'
 
 
@@ -70,7 +70,7 @@ class Characters(models.Model):
     idpl = models.ForeignKey('Place', models.DO_NOTHING, db_column='idPl', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'Characters'
 
 
@@ -79,7 +79,7 @@ class Containers(models.Model):
     nameco = models.CharField(db_column='nameCo', max_length=45, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'Containers'
 
 
@@ -88,7 +88,7 @@ class Dance(models.Model):
     nameda = models.CharField(max_length=45, blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'Dance'
 
 
@@ -98,7 +98,7 @@ class Drinks(models.Model):
     idco = models.ForeignKey(Containers, models.DO_NOTHING, db_column='idCo')  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'Drinks'
 
 
@@ -108,7 +108,7 @@ class Enemies(models.Model):
     idch_field = models.ForeignKey(Characters, models.DO_NOTHING, db_column='idCh_', related_name='+')  # Field name made lowercase. Field renamed because it ended with '_'.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'Enemies'
 
 
@@ -117,7 +117,7 @@ class Foods(models.Model):
     namefo = models.CharField(db_column='nameFo', max_length=45, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'Foods'
 
 
@@ -127,7 +127,7 @@ class Friends(models.Model):
     idch_field = models.ForeignKey(Characters, models.DO_NOTHING, db_column='idCh_', related_name='+')  # Field name made lowercase. Field renamed because it ended with '_'.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'Friends'
 
 
@@ -136,7 +136,7 @@ class Gender(models.Model):
     namege = models.CharField(db_column='nameGe', max_length=45, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'Gender'
 
 
@@ -146,7 +146,7 @@ class Job(models.Model):
     idge = models.ForeignKey(Gender, models.DO_NOTHING, db_column='idGe')  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'Job'
 
 
@@ -154,7 +154,7 @@ class Place(models.Model):
     idplace = models.AutoField(db_column='idPlace', primary_key=True)  # Field name made lowercase.
     namepl = models.CharField(max_length=45, blank=True, null=True)
     class Meta:
-        managed = False
+        managed = True
         db_table = 'Place'
 
 
@@ -163,7 +163,7 @@ class Role(models.Model):
     namero = models.CharField(db_column='nameRo', max_length=45, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'Role'
 
 
@@ -172,7 +172,7 @@ class Scenarios(models.Model):
     namesc = models.CharField(max_length=45, blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'Scenarios'
 
 
@@ -181,7 +181,7 @@ class Species(models.Model):
     namesp = models.CharField(db_column='nameSp', max_length=45, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'Species'
 
 
@@ -191,7 +191,7 @@ class StCh(models.Model):
     idch = models.ForeignKey(Characters, models.DO_NOTHING, db_column='idCh')  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'St_Ch'
 
 
@@ -203,7 +203,7 @@ class Story(models.Model):
     idsc = models.ForeignKey(Scenarios, models.DO_NOTHING, db_column='idSc')  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'Story'
 
 
@@ -212,7 +212,7 @@ class Ticks(models.Model):
     nameti = models.CharField(db_column='nameti', max_length=45, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'Ticks'
 
 
@@ -223,7 +223,7 @@ class Tools(models.Model):
     idjo = models.ForeignKey(Job, models.DO_NOTHING, db_column='idJo')  # Field name made lowercase.
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'Tools'
 
 
@@ -232,7 +232,7 @@ class Type(models.Model):
     namety = models.CharField(max_length=45, blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'Type'
 
 
@@ -241,7 +241,7 @@ class Weapons(models.Model):
     namewe = models.CharField(max_length=45, blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'Weapons'
 
 
@@ -249,7 +249,7 @@ class Weapons(models.Model):
 #     name = models.CharField(unique=True, max_length=80)
 
 #     class Meta:
-#         managed = False
+#         managed = True
 #         db_table = 'auth_group'
 
 
@@ -258,7 +258,7 @@ class Weapons(models.Model):
 #     permission = models.ForeignKey('AuthPermission', models.DO_NOTHING)
 
 #     class Meta:
-#         managed = False
+#         managed = True
 #         db_table = 'auth_group_permissions'
 #         unique_together = (('group', 'permission'),)
 
@@ -269,7 +269,7 @@ class Weapons(models.Model):
 #     codename = models.CharField(max_length=100)
 
 #     class Meta:
-#         managed = False
+#         managed = True
 #         db_table = 'auth_permission'
 #         unique_together = (('content_type', 'codename'),)
 
@@ -287,7 +287,7 @@ class Weapons(models.Model):
 #     date_joined = models.DateTimeField()
 
 #     class Meta:
-#         managed = False
+#         managed = True
 #         db_table = 'auth_user'
 
 
@@ -296,7 +296,7 @@ class Weapons(models.Model):
 #     group = models.ForeignKey(AuthGroup, models.DO_NOTHING)
 
 #     class Meta:
-#         managed = False
+#         managed = True
 #         db_table = 'auth_user_groups'
 #         unique_together = (('user', 'group'),)
 
@@ -306,7 +306,7 @@ class Weapons(models.Model):
 #     permission = models.ForeignKey(AuthPermission, models.DO_NOTHING)
 
 #     class Meta:
-#         managed = False
+#         managed = True
 #         db_table = 'auth_user_user_permissions'
 #         unique_together = (('user', 'permission'),)
 
@@ -321,7 +321,7 @@ class Weapons(models.Model):
 #     user = models.ForeignKey(AuthUser, models.DO_NOTHING)
 
 #     class Meta:
-#         managed = False
+#         managed = True
 #         db_table = 'django_admin_log'
 
 
@@ -330,7 +330,7 @@ class Weapons(models.Model):
 #     model = models.CharField(max_length=100)
 
 #     class Meta:
-#         managed = False
+#         managed = True
 #         db_table = 'django_content_type'
 #         unique_together = (('app_label', 'model'),)
 
@@ -341,7 +341,7 @@ class Weapons(models.Model):
 #     applied = models.DateTimeField()
 
 #     class Meta:
-#         managed = False
+#         managed = True
 #         db_table = 'django_migrations'
 
 
@@ -351,5 +351,5 @@ class Weapons(models.Model):
 #     expire_date = models.DateTimeField()
 
 #     class Meta:
-#         managed = False
+#         managed = True
 #         db_table = 'django_session'
