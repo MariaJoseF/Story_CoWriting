@@ -14,3 +14,19 @@
 {'C_BGd': ' Wiskhy', 'emotion': 'super_happy'} 
 {'C_Ba': ' poke', 'emotion': 'happy'} 
 {'C_BGp': ' castle', 'emotion': 'super_sad'} 
+{'C_MCg': ' man', 'emotion': 'sad'} 
+{'C_MC': ' Ana', 'emotion': 'super_happy'} 
+{'C_MCj_man': ' prince', 'emotion': 'super_sad'} 
+{'C_MCd': ' rhum', 'emotion': 'happy'} 
+{'C_MCw': ' lazergun', 'emotion': 'sad'} 
+{'C_P': ' village', 'emotion': 'sad'} 
+{'C_SCg': ' robot', 'emotion': 'super_happy'} 
+{'C_SC': ' RTX21', 'emotion': 'sad'} 
+{'C_SCs_robot': ' ghost robot', 'emotion': 'super_happy'} 
+{'C_SC_dance': ' waltz', 'emotion': 'super_happy'} 
+{'C_BGg': ' woman', 'emotion': 'super_happy'} 
+{'C_BG': ' Maria', 'emotion': 'super_happy'} 
+{'C_BGj_woman': ' witch', 'emotion': 'sad'} 
+{'C_BGd': ' rhum', 'emotion': 'super_happy'} 
+{'C_Ba': ' trap', 'emotion': 'super_sad'} 
+{'C_BGp': ' castle', 'emotion': 'super_sad'} 
